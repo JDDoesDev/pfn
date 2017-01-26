@@ -1,0 +1,43 @@
+.wprm-manage {
+	.wprm-manage-datatable {
+		display: none;
+
+		.wprm-icon {
+			cursor: pointer;
+			color: #444;
+		}
+	}
+
+	.dataTables_wrapper {
+		margin-top: 20px;
+
+		.wprm-manage-datatable {
+			display: table;
+		}
+	}
+}
+
+.wprm-manage-recipes-actions-tooltip,
+.wprm-manage-ingredients-actions-tooltip,
+.wprm-manage-taxonomies-actions-tooltip,
+.wprm-manage-custom-taxonomies-actions-tooltip {
+	text-align: right;
+	min-width: 250px;
+	min-height: 70px;
+	font-size: 14px;
+
+	.tooltip-header {
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	a {
+		color: white;
+		display: block;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

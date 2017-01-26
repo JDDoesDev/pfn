@@ -1,0 +1,86 @@
+<?php
+/**
+ * Handle the manage recipes page.
+ *
+ * @link       http://bootstrapped.ventures
+ * @since      1.9.0
+ *
+ * @package    WP_Recipe_Maker
+ * @subpackage WP_Recipe_Maker/includes/admin/manage
+ */
+
+/**
+ * Handle the manage recipes page.
+ *
+ * @since      1.9.0
+ * @package    WP_Recipe_Maker
+ * @subpackage WP_Recipe_Maker/includes/admin/manage
+ * @author     Brecht Vandersmissen <brecht@bootstrapped.ventures>
+ */
+class WPRM_Manage_Recipes {
+
+	/**
+	 * Register actions and filters.
+	 *
+	 * @since    1.9.0
+	 */
+	public static function init() {
+	}
+
+	/**
+	 * Get the data to display in the datatable.
+	 *
+	 * @since    1.9.0
+	 * @param		 array $datatable Datatable request values.
+	 */
+	public static function get_datatable( $datatable ) {
+		$data = array();
+
+		$orderby_options = array(
+			0 => 'ID',
+			1 => 'date',
+			2 => 'title',
+		);
+		$orderby = isset( $orderby_options[ $datatable['orderby'] ] ) ? $orderby_options[ $datatable['orderby'] ] : $orderby_options[0];
+
+		$args = array(
+				'post_type' => WPRM_POST_TYPE,
+				'post_status' => 'any',
+				'orderby' => $orderby,
+				'order' => $datatable['order'],
+				'posts_per_page' => $datatable['length'],
+				'offset' => $datatable['start'],
+				's' => $datatable['search'],
+		);
+
+		$query = new WP_Query( $args );
+
+		$posts = $query->posts;
+		foreach ( $posts as $post ) {
+			$recipe = WPRM_Recipe_Manager::get_recipe( $post );
+
+			if ( $recipe->parent_post_id() ) {
+				$parent_post_link = '<a href="' . esc_url( get_edit_post_link( $recipe->parent_post_id() ) ) . '" target="_blank">' . get_the_title( $recipe->parent_post_id() ) . '</a>';
+			} else {
+				$parent_post_link = '';
+			}
+
+			$data[] = array(
+				$recipe->id(),
+				get_the_date( 'Y/m/d', $recipe->id() ),
+				'<span id="wprm-manage-recipes-name-' . esc_attr( $recipe->id() ) . '">' . $recipe->name() . '</span>',
+				$parent_post_link,
+				'<span class="dashicons dashicons-admin-tools wprm-icon wprm-manage-recipes-actions" data-id="' . esc_attr( $recipe->id() ) . '"></span>',
+			);
+		}
+
+		return array(
+			'draw' => $datatable['draw'],
+			'recordsTotal' => $query->found_posts,
+			'recordsFiltered' => $query->found_posts,
+			'data' => $data,
+		);
+	}
+}
+
+WPRM_Manage_Recipes::init();
