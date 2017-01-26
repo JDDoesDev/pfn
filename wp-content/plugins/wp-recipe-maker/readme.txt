@@ -92,6 +92,9 @@ Yes! We pride ourselves on offering awesome support and almost always answer sup
 
 == Changelog ==
 
+= 1.12.1 =
+* Fix: Recipe Card import of instructions
+
 = 1.12.0 =
 * Feature: Print Credit message
 * Feature: Add existing recipe through modal
@@ -218,6 +221,9 @@ Yes! We pride ourselves on offering awesome support and almost always answer sup
 * Feature: Fallback recipe when the plugin is disabled
 
 == Upgrade notice ==
+
+= 1.12.1 =
+Update if you want to use the Recipe Card import
 
 = 1.12.0 =
 New import and other features + some bug fixes

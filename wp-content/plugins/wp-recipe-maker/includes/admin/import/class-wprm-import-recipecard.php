@@ -169,7 +169,7 @@ class WPRM_Import_Recipecard extends WPRM_Import {
 
 				foreach ( $rc_instruction_group->lines as $rc_instruction ) {
 					$group['instructions'][] = array(
-						'raw' => $rc_instruction,
+						'text' => $rc_instruction,
 					);
 				}
 				$instructions[] = $group;
