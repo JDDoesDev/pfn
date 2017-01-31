@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WP Recipe Maker v1.11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-14 13:51+0000\n"
-"PO-Revision-Date: 2017-01-14 13:52+0000\n"
+"PO-Revision-Date: 2017-01-29 10:30+0000\n"
 "Last-Translator: Navarro (http://navarradas.com)\n"
 "Language-Team: Spanish (Spain)\n"
 "MIME-Version: 1.0\n"
@@ -494,7 +494,7 @@ msgstr "Detalles de la Receta"
 
 #: includes/admin/modal/class-wprm-modal.php:138
 msgid "Ingredients & Instructions"
-msgstr "Ingredientes e Instrucciones"
+msgstr "Ingredientes y Elaboración paso a paso"
 
 #: includes/admin/modal/class-wprm-modal.php:144 
 #: includes/public/class-wprm-template-helper.php:85
@@ -709,7 +709,7 @@ msgstr "Autor"
 #: includes/public/class-wprm-template-helper.php:84 
 #: templates/admin/modal/tabs/import-text.php:52
 msgid "Instructions"
-msgstr "Instrucciones"
+msgstr "Elaboración paso a paso"
 
 #: includes/public/class-wprm-template-helper.php:152
 msgid "d"
@@ -985,11 +985,11 @@ msgstr "Resumen"
 
 #: templates/admin/modal/tabs/import-text.php:45
 msgid "Check any ingredient groups in this list:"
-msgstr "Échale un ojo a los ingredientes grupales de esta lista:"
+msgstr "Échale un ojo a los ingredientes compuestos de esta lista:"
 
 #: templates/admin/modal/tabs/import-text.php:57
 msgid "Check any instruction groups in this list:"
-msgstr "Échale un ojo a las instrucciones grupales de esta lista:"
+msgstr "Échale un ojo a los pasos para ingredientes compuestos de esta lista:"
 
 #: templates/admin/modal/tabs/import-text.php:64 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:22 
@@ -1065,7 +1065,7 @@ msgstr "Unidad"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:28
 msgid "Ingredient Group"
-msgstr "Ingrediente grupal"
+msgstr "Ingrediente compuesto"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:35
 msgid "olive oil"
@@ -1081,23 +1081,23 @@ msgstr "Añadir ingrediente"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:45
 msgid "Add Ingredient Group"
-msgstr "Añadir ingrediente grupal"
+msgstr "Añadir ingrediente compuesto"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:53
 msgid "Instruction"
-msgstr "Intrucción"
+msgstr "Paso"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:60
 msgid "Instruction Group"
-msgstr "Instrucción grupal"
+msgstr "Paso para ingrediente compuesto"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:81
 msgid "Add Instruction"
-msgstr "Añadir instrucción"
+msgstr "Añadir paso"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:82
 msgid "Add Instruction Group"
-msgstr "Añadir instrucción grupal"
+msgstr "Añadir paso para ingrediente compuesto"
 
 #: templates/admin/modal/tabs/recipe-ingredients-instructions.php:88
 msgid ""
@@ -1105,7 +1105,7 @@ msgid ""
 "ingredients/instructions without having to click the button."
 msgstr ""
 "Usa la tecla TAB para mover fácilmente de campo a capo y para añadir "
-"ingredientes/instrucciones sin tener que hacer clic en el botón."
+"ingredientes/pasos sin tener que hacer clic en el botón."
 
 #: templates/admin/modal/tabs/recipe-snippets-jump.php:15
 msgid ""

@@ -79,12 +79,26 @@ class WPRM_Taxonomies {
 	 * Get the recipe taxonomies.
 	 *
 	 * @since    1.10.0
+	 * @param    boolean $include_internal Wether to include taxonomies used internally.
 	 */
-	public static function get_taxonomies() {
+	public static function get_taxonomies( $include_internal = false ) {
 		$taxonomies = self::get_taxonomies_to_register();
-		unset( $taxonomies['wprm_ingredient'] );
+		if ( ! $include_internal ) {
+			unset( $taxonomies['wprm_ingredient'] );
+		}
 
 		return $taxonomies;
+	}
+
+	/**
+	 * Check if a recipe taxonomy exists.
+	 *
+	 * @since    1.13.0
+	 * @param    mixed $taxonomy Name of the taxonomy to check.
+	 */
+	public static function exists( $taxonomy ) {
+		$taxonomies = self::get_taxonomies_to_register();
+		return array_key_exists( $taxonomy, $taxonomies );
 	}
 
 	/**

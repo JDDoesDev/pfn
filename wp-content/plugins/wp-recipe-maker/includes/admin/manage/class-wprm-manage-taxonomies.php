@@ -74,10 +74,15 @@ class WPRM_Manage_Taxonomies {
 		$terms = get_terms( $args );
 
 		foreach ( $terms as $term ) {
+			$recipes_url = add_query_arg( array(
+				'sub' => 'recipes',
+				$taxonomy => $term->term_id,
+			), admin_url( 'admin.php?page=wprecipemaker' ) );
+
 			$data[] = array(
 				$term->term_id,
 				'<span id="wprm-manage-taxonomies-name-' . esc_attr( $term->term_id ) . '">' . $term->name . '</span>',
-				$term->count,
+				'<a href="' . $recipes_url . '">' . $term->count . '</a>',
 				'<span class="dashicons dashicons-admin-tools wprm-icon wprm-manage-taxonomies-actions" data-id="' . esc_attr( $term->term_id ) . '" data-count="' . esc_attr( $term->count ) . '"></span>',
 			);
 		}

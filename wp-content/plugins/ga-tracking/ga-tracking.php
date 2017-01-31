@@ -1,4 +1,3 @@
-
 <?php
 /*
 Plugin Name: Simple Google Analytics Plugin

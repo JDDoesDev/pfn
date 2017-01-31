@@ -76,6 +76,11 @@ class WPRM_Template_Manager {
 		$output .= $selector . ' .wprm-recipe .wprm-color-accent { color: ' . WPRM_Settings::get( 'template_color_accent_text' ) . '; }';
 		$output .= $selector . ' .wprm-recipe .wprm-color-accent2 { background-color: ' . WPRM_Settings::get( 'template_color_accent2' ) . '; }';
 		$output .= $selector . ' .wprm-recipe .wprm-color-accent2 { color: ' . WPRM_Settings::get( 'template_color_accent2_text' ) . '; }';
+
+		// Comment ratings.
+		$output .= ' .wprm-comment-rating svg path, .comment-form-wprm-rating svg path { fill: ' . WPRM_Settings::get( 'template_color_comment_rating' ) . '; }';
+		$output .= ' .wprm-comment-rating svg polygon, .comment-form-wprm-rating svg polygon { stroke: ' . WPRM_Settings::get( 'template_color_comment_rating' ) . '; }';
+
 		$output .= '</style>';
 
 		echo $output;

@@ -10,7 +10,7 @@
  */
 
 ?>
-<p class="comment-form-wprm-rating">
+<p class="comment-form-wprm-rating" data-color="<?php echo esc_attr( WPRM_Settings::get( 'template_color_comment_rating' ) ); ?>">
 	<label for="wprm-rating"><?php esc_html_e( 'Recipe Rating', 'wp-recipe-maker' ); ?></label>
 	<span class="wprm-rating-stars">
 		<?php

@@ -1,4 +1,14 @@
 .wprm-manage {
+
+	.wprm-manage-recipes-filters {
+		margin-top: 20px;
+		
+		.wprm-manage-recipes-filter,
+		.select2_wprm-container {
+			margin-left: 5px;
+		}
+	}
+
 	.wprm-manage-datatable {
 		display: none;
 

@@ -92,6 +92,14 @@ Yes! We pride ourselves on offering awesome support and almost always answer sup
 
 == Changelog ==
 
+= 1.13.0 =
+* Feature: Filter recipes on manage page by ingredients and tags
+* Feature: Change comment rating stars color in the settings
+* Improvement: Mobile template of Tastefully Simple
+* Fix: Problem with unwanted redirections by the Redirection plugin
+* Fix: Problem with unwanted redirections by the Yoast SEO Premium plugin
+* Fix: Prevent warnings on settings page
+
 = 1.12.1 =
 * Fix: Recipe Card import of instructions
 
@@ -221,6 +229,9 @@ Yes! We pride ourselves on offering awesome support and almost always answer sup
 * Feature: Fallback recipe when the plugin is disabled
 
 == Upgrade notice ==
+
+= 1.13.0 =
+Update to prevent warning notices on the settings page
 
 = 1.12.1 =
 Update if you want to use the Recipe Card import

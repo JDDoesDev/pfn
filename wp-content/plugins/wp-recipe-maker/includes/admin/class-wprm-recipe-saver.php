@@ -147,7 +147,7 @@ class WPRM_Recipe_Saver {
 	 *
 	 * @since    1.0.0
 	 * @param		 int    $id Post ID being saved.
-	 * @param		 objoct $post Post being saved.
+	 * @param		 object $post Post being saved.
 	 */
 	public static function update_post( $id, $post ) {
 		// Use parent post if we're currently updating a revision.
@@ -158,12 +158,23 @@ class WPRM_Recipe_Saver {
 
 		$recipe_ids = WPRM_Recipe_Manager::get_recipe_ids_from_content( $post->post_content );
 
+		// Prevent issue with automatically created redirections.
+		if ( count( $recipe_ids ) > 0 ) {
+			// Redirection plugin.
+			if ( isset( $_POST['redirection_slug'] ) ) { // Input var okay.
+				$_POST['redirection_slug'] = '/';
+			}
+
+			// Yoast SEO Premium plugin.
+			add_filter( 'wpseo_premium_post_redirect_slug_change', '__return_true' );
+		}
+
 		foreach ( $recipe_ids as $recipe_id ) {
 			$recipe = array(
 				'ID'          	=> $recipe_id,
 				'post_status' 	=> $post->post_status,
 				'post_author' 	=> $post->post_author,
-				'post_date' 		=> $post->post_date,
+				'post_date' 	=> $post->post_date,
 				'post_modified' => $post->post_modified,
 			);
 			wp_update_post( $recipe );

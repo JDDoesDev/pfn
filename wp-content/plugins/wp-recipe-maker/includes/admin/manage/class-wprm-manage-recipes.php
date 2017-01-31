@@ -43,6 +43,28 @@ class WPRM_Manage_Recipes {
 		);
 		$orderby = isset( $orderby_options[ $datatable['orderby'] ] ) ? $orderby_options[ $datatable['orderby'] ] : $orderby_options[0];
 
+		// Advanced Search.
+		$search = $datatable['search'];
+		$tax_query = array();
+
+		preg_match_all( '/{{(.+?)=(\d*)}}/', $datatable['search'], $search_taxonomies );
+		$search_taxonomies_length = count( $search_taxonomies[0] );
+		if ( $search_taxonomies_length > 0 ) {
+			for ( $i = 0; $i < $search_taxonomies_length; $i++ ) {
+				// Remove advanced search.
+				$search = str_replace( $search_taxonomies[0][ $i ], '', $search );
+
+				// Add taxonomy query.
+				$tax_query[] = array(
+					'taxonomy' => $search_taxonomies[1][ $i ],
+					'field' => 'term_id',
+					'terms' => intval( $search_taxonomies[2][ $i ] ),
+				);
+			}
+
+			$search = trim( $search );
+		}
+
 		$args = array(
 				'post_type' => WPRM_POST_TYPE,
 				'post_status' => 'any',
@@ -50,7 +72,8 @@ class WPRM_Manage_Recipes {
 				'order' => $datatable['order'],
 				'posts_per_page' => $datatable['length'],
 				'offset' => $datatable['start'],
-				's' => $datatable['search'],
+				'tax_query' => $tax_query,
+				's' => $search,
 		);
 
 		$query = new WP_Query( $args );

@@ -69,7 +69,7 @@ class WPRM_Migrations {
 		foreach ( self::$notices as $notice ) {
 			echo '<div class="notice notice-warning is-dismissible">';
 			echo '<p><strong>WP Recipe Maker</strong><br/>';
-			echo wp_kses( $notice );
+			echo wp_kses_post( $notice );
 			echo '</p>';
 			echo '</div>';
 		}

@@ -11,6 +11,16 @@
 
 ?>
 
+<h3>2017-01-31 | WP Recipe Maker 1.13.0</h3>
+<ul>
+	<li>Feature: Filter recipes on manage page by ingredients and tags</li>
+	<li>Feature: Change comment rating stars color in the settings</li>
+	<li>Improvement: Mobile template of Tastefully Simple</li>
+	<li>Fix: Problem with unwanted redirections by the Redirection plugin</li>
+	<li>Fix: Problem with unwanted redirections by the Yoast SEO Premium plugin</li>
+	<li>Fix: Prevent warnings on settings page</li>
+</ul>
+
 <h3>2017-01-25 | WP Recipe Maker 1.12.0</h3>
 <ul>
 	<li>Feature: Print Credit message</li>

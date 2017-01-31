@@ -122,10 +122,15 @@ class WPRM_Manage_Ingredients {
 
 		foreach ( $terms as $term ) {
 			$link = get_term_meta( $term->term_id, 'wprmp_ingredient_link', true );
+			$recipes_url = add_query_arg( array(
+				'sub' => 'recipes',
+				'wprm_ingredient' => $term->term_id,
+			), admin_url( 'admin.php?page=wprecipemaker' ) );
+
 			$data[] = array(
 				$term->term_id,
 				'<span id="wprm-manage-ingredients-name-' . esc_attr( $term->term_id ) . '">' . $term->name . '</span>',
-				$term->count,
+				'<a href="' . $recipes_url . '">' . $term->count . '</a>',
 				'<span id="wprm-manage-ingredients-link-' . esc_attr( $term->term_id ) . '"><a href="' . esc_url( $link ) . '" target="_blank">' . esc_url( $link ) . '</a></span>',
 				'<span class="dashicons dashicons-admin-tools wprm-icon wprm-manage-ingredients-actions" data-id="' . esc_attr( $term->term_id ) . '" data-count="' . esc_attr( $term->count ) . '"></span>',
 			);

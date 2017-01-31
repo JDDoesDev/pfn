@@ -38,12 +38,36 @@ wprm_admin.delete_recipe = function(recipe_id) {
 	});
 };
 
+// Source: http://stackoverflow.com/questions/647259/javascript-query-string
+wprm_admin.get_query_args = function() {
+  var result = {}, queryString = location.search.slice(1),
+      re = /([^&=]+)=([^&]*)/g, m;
+
+  while (m = re.exec(queryString)) {
+    result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  }
+
+  return result;
+}
+
 jQuery(document).ready(function($) {
 	// Get ID of datatable that's active on this page
 	var wprm_active_datatable = '';
 	jQuery('.wprm-manage-datatable').each(function() {
 		wprm_active_datatable = jQuery(this).attr('id');
 	});
+
+	// Datatable filters.
+	var args = wprm_admin.get_query_args();
+	jQuery('.wprm-manage-recipes-filter').on('change', function() {
+		wprm_datatable.search('').draw();
+	}).each(function() {
+		var taxonomy = jQuery(this).data('taxonomy');
+
+		if(args.hasOwnProperty(taxonomy)) {
+			jQuery(this).val(args[taxonomy]);
+		}
+	}).select2_wprm();
 
 	// Init datatable
 	$.fn.dataTable.ext.errMode = 'throw';
@@ -59,6 +83,24 @@ jQuery(document).ready(function($) {
 				d.action = 'wprm_manage_datatable';
 				d.security = wprm_manage.nonce;
 				d.table = wprm_active_datatable;
+
+				// Check for advanced search filters.
+				var search_filters = jQuery('.wprm-manage-recipes-filter');
+
+				if(search_filters.length > 0) {
+					var search = jQuery('#wprm-manage-recipes_wrapper').find('input[type="search"]').val();
+
+					search_filters.each(function() {
+						var taxonomy = jQuery(this).data('taxonomy');
+						var value = parseInt(jQuery(this).val());
+
+						if(value > 0) {
+							search += '{{' + taxonomy + '=' + value +'}}';
+						}
+					});
+
+					d.search.value = search;
+				}
 			}
 		},
 		drawCallback: function() {

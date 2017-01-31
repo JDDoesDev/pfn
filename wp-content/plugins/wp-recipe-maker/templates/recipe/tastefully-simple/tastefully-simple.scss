@@ -87,6 +87,7 @@
 
 		.wprm-recipe-time-header {
 			margin-bottom: 4px;
+			word-break: break-all;
 		}
 
 		.wprm-recipe-time {
@@ -171,6 +172,9 @@
 			.wprm-recipe-image {
 				margin-left: 0;
 			}
+		}
+		.wprm-recipe-times-container {
+			width: 100%;
 		}
 	}
 }

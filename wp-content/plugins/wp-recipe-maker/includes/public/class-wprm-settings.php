@@ -45,6 +45,7 @@ class WPRM_Settings {
 		'template_color_link' => '#000000',
 		'template_color_header' => '#000000',
 		'template_color_icon' => '#343434',
+		'template_color_comment_rating' => '#343434',
 		'template_color_accent' => '#2c3e50',
 		'template_color_accent_text' => '#ffffff',
 		'template_color_accent2' => '#3498db',
@@ -216,6 +217,7 @@ class WPRM_Settings {
 			$template_color_link = isset( $_POST['template_color_link'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_link'] ) ) : ''; // Input var okay.
 			$template_color_header = isset( $_POST['template_color_header'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_header'] ) ) : ''; // Input var okay.
 			$template_color_icon = isset( $_POST['template_color_icon'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_icon'] ) ) : ''; // Input var okay.
+			$template_color_comment_rating = isset( $_POST['template_color_comment_rating'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_comment_rating'] ) ) : ''; // Input var okay.
 			$template_color_accent = isset( $_POST['template_color_accent'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_accent'] ) ) : ''; // Input var okay.
 			$template_color_accent_text = isset( $_POST['template_color_accent_text'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_accent_text'] ) ) : ''; // Input var okay.
 			$template_color_accent2 = isset( $_POST['template_color_accent2'] ) ? sanitize_text_field( wp_unslash( $_POST['template_color_accent2'] ) ) : ''; // Input var okay.
@@ -223,7 +225,7 @@ class WPRM_Settings {
 
 			$default_recipe_template = isset( $_POST['default_recipe_template'] ) ? sanitize_text_field( wp_unslash( $_POST['default_recipe_template'] ) ) : ''; // Input var okay.
 			$default_print_template = isset( $_POST['default_print_template'] ) ? sanitize_text_field( wp_unslash( $_POST['default_print_template'] ) ) : ''; // Input var okay.
-			$print_credit = isset( $_POST['print_credit'] ) ? wp_kses( wp_unslash( $_POST['print_credit'] ) ) : ''; // Input var okay.
+			$print_credit = isset( $_POST['print_credit'] ) ? wp_kses_post( wp_unslash( $_POST['print_credit'] ) ) : ''; // Input var okay.
 
 			$settings = array();
 
@@ -240,6 +242,7 @@ class WPRM_Settings {
 			if ( $template_color_link ) { $settings['template_color_link'] = $template_color_link; }
 			if ( $template_color_header ) { $settings['template_color_header'] = $template_color_header; }
 			if ( $template_color_icon ) { $settings['template_color_icon'] = $template_color_icon; }
+			if ( $template_color_comment_rating ) { $settings['template_color_comment_rating'] = $template_color_comment_rating; }
 			if ( $template_color_accent ) { $settings['template_color_accent'] = $template_color_accent; }
 			if ( $template_color_accent_text ) { $settings['template_color_accent_text'] = $template_color_accent_text; }
 			if ( $template_color_accent2 ) { $settings['template_color_accent2'] = $template_color_accent2; }

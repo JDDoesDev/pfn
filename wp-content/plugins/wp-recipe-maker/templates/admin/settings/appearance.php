@@ -128,6 +128,14 @@
 			</tr>
 			<tr>
 				<th scope="row">
+					<label for="template_color_comment_rating"><?php esc_html_e( 'Comment Rating Color', 'wp-recipe-maker' ); ?></label>
+				</th>
+				<td>
+					<input name="template_color_comment_rating" type="text" id="template_color_comment_rating" value="<?php echo esc_attr( WPRM_Settings::get( 'template_color_comment_rating' ) ); ?>" data-default-color="<?php echo esc_attr( WPRM_Settings::get_default( 'template_color_comment_rating' ) ); ?>" class="wprm-color">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
 					<label for="template_color_accent"><?php esc_html_e( 'Accent Color', 'wp-recipe-maker' ); ?></label>
 				</th>
 				<td>
