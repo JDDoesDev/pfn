@@ -1,4 +1,10 @@
 # BEGIN WordPress
+
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
