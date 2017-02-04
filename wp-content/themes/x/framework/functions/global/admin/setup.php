@@ -93,7 +93,7 @@ if ( ! function_exists( 'x_setup_theme' ) ) :
 
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 100, 9999 );
-    add_image_size( 'entry',                   9999,      9999,                                   false );
+    add_image_size( 'entry',                   x_post_thumbnail_width(),      9999,                                   false );
     add_image_size( 'entry-cropped',           x_post_thumbnail_width(),      x_post_thumbnail_cropped_height(),      true  );
     add_image_size( 'entry-fullwidth',         x_post_thumbnail_width_full(), 9999,                                   false );
     add_image_size( 'entry-cropped-fullwidth', x_post_thumbnail_width_full(), x_post_thumbnail_cropped_height_full(), true  );
