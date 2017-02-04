@@ -18,7 +18,7 @@ $fullwidth = get_post_meta( get_the_ID(), '_x_post_layout', true );
   <div class="featured-image" style="background-image:url(<?php the_post_thumbnail_url(full); ?>); ?>) !important;" data-x-element="section" data-x-params="{&quot;type&quot;:&quot;image&quot;,&quot;parallax&quot;:true}";">
    <div class="x-container max width offset">
     <div class="caption">
-      <h3 class="title"><?php the_title(); ?></h3>
+      <h1 class="title"><?php the_title(); ?></h1>
     </div>
    </div>
   </div>
