@@ -1019,7 +1019,7 @@ class WXRImporter extends \WP_Importer {
 
 			default:
 				// associated object is missing or not imported yet, we'll retry later
-				$this->missing_menu_items[] = $item;
+				$this->missing_menu_items[] = $data;
 				$this->logger->debug( 'Unknown menu item type' );
 				break;
 		}
@@ -1322,7 +1322,7 @@ class WXRImporter extends \WP_Importer {
 			if ( $post_exists ) {
 				$existing = $this->comment_exists( $comment );
 				if ( $existing ) {
-					$this->mapping['comment'][ $original_id ] = $exists;
+					$this->mapping['comment'][ $original_id ] = $existing;
 					continue;
 				}
 			}

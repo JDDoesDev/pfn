@@ -376,7 +376,25 @@ class OneClickDemoImport {
 
 		// Display final messages (success or error messages).
 		if ( empty( $this->frontend_error_messages ) ) {
-			$response['message'] = sprintf(
+			$response['message'] = '';
+
+			if ( ! apply_filters( 'pt-ocdi/disable_pt_branding', false ) ) {
+				$twitter_status = esc_html__( 'Just used One Click Demo Import plugin and it was awesome! Thanks @ProteusThemes! https://www.proteusthemes.com/', 'pt-ocdi' );
+
+				$response['message'] .= sprintf(
+					__( '%1$s%6$sWasn\'t this a great One Click Demo Import experience?%7$s Created and maintained by %3$sProteusThemes%4$s. %2$s%5$sClick to Tweet!%4$s%8$s', 'pt-ocdi' ),
+					'<div class="notice  notice-info"><p>',
+					'<br>',
+					'<strong><a href="https://www.proteusthemes.com/" target="_blank">',
+					'</a></strong>',
+					'<strong><a href="' . add_query_arg( 'status', urlencode( $twitter_status ), 'http://twitter.com/home' ) . '" target="_blank">',
+					'<strong>',
+					'</strong>',
+					'</p></div>'
+				);
+			}
+
+			$response['message'] .= sprintf(
 				__( '%1$s%3$sThat\'s it, all done!%4$s%2$sThe demo import has finished. Please check your page and make sure that everything has imported correctly. If it did, you can deactivate the %3$sOne Click Demo Import%4$s plugin, because it has done its job.%5$s', 'pt-ocdi' ),
 				'<div class="notice  notice-success"><p>',
 				'<br>',
@@ -455,8 +473,17 @@ class OneClickDemoImport {
 	 * @param string $additional_value The additional value that will be appended to the existing frontend_error_messages.
 	 */
 	public function append_to_frontend_error_messages( $text ) {
-		if ( ! empty( $text ) && ! in_array( $text , $this->frontend_error_messages ) ) {
-			$this->frontend_error_messages[] = $text;
+		$lines = array();
+
+		if ( ! empty( $text ) ) {
+			$text = str_replace( '<br>', PHP_EOL, $text );
+			$lines = explode( PHP_EOL, $text );
+		}
+
+		foreach ( $lines as $line ) {
+			if ( ! empty( $line ) && ! in_array( $line , $this->frontend_error_messages ) ) {
+				$this->frontend_error_messages[] = $line;
+			}
 		}
 	}
 
@@ -471,7 +498,7 @@ class OneClickDemoImport {
 
 		if ( ! empty( $this->frontend_error_messages ) ) {
 			foreach ( $this->frontend_error_messages as $line ) {
-				$output .= nl2br( $line );
+				$output .= esc_html( $line );
 				$output .= '<br>';
 			}
 		}

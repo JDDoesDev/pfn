@@ -3,7 +3,7 @@ Contributors: capuderg, cyman, Prelc
 Tags: import, content, demo, data, widgets, settings
 Requires at least: 4.0.0
 Tested up to: 4.7
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv3 or later
 
 Import your demo content, widgets and theme settings with one click. Theme authors! Enable simple demo import for your theme demo data.
@@ -13,11 +13,18 @@ Import your demo content, widgets and theme settings with one click. Theme autho
 The best feature of this plugin is, that theme authors can define import files in their themes and so all you (the user of the theme) have to do is click on the "Import Demo Data" button.
 
 > **Are you a theme author?**
+>
 > Setup One Click Demo Imports for your theme and your users will thank you for it!
 >
 > [Follow this easy guide on how to setup this plugin for your themes!](http://proteusthemes.github.io/one-click-demo-import/)
 >
-> Also sign up to the newsletter, so we can inform you about any updates, changes or improvements.
+> Also [sign up to the newsletter](http://proteusthemes.github.io/one-click-demo-import/#ocdi-newsletter-signup), so we can inform you about any updates, changes or improvements.
+
+> **Are you a theme user?**
+>
+> Contact the author of your theme and [let them know about this plugin](http://proteusthemes.github.io/one-click-demo-import/theme-users.html). Theme authors can make any theme compatible with this plugin in 15 minutes and make it much more user-friendly.
+>
+> "[Where can I find the contact of the theme author?](http://proteusthemes.github.io/one-click-demo-import/theme-users.html)"
 
 This plugin will create a submenu page under Appearance with the title **Import demo data**.
 
@@ -302,6 +309,15 @@ function my_theme_ocdi_confirmation_dialog_options ( $options ) {
 add_filter( 'pt-ocdi/confirmation_dialog_options', 'my_theme_ocdi_confirmation_dialog_options', 10, 1 );
 `
 
+= How can I disable the ProteusThemes branding notice after successful demo import? =
+
+You can disable the branding notice with a WP filter. All you need to do is add this bit of code to your theme:
+
+`add_filter( 'pt-ocdi/disable_pt_branding', '__return_true' );`
+
+and the notice will not be displayed.
+
+
 = I can't activate the plugin, because of a fatal error, what can I do? =
 
 *Update: since version 1.2.0, there is now a admin error notice, stating that the minimal PHP version required for this plugin is 5.3.2.*
@@ -323,6 +339,14 @@ Please visit this [docs page](https://github.com/proteusthemes/one-click-demo-im
 3. Example of how the import page looks like, when no demo imports are predefined a.k.a manual import.
 
 == Changelog ==
+
+= 2.2.0 =
+
+*Release Date - 5 February 2017*
+
+* Add ProteusThemes branding notice after successful import,
+* Fix after import error reporting (duplicate errors were shown),
+* Fix some undefined variables in the plugin, causing PHP notices.
 
 = 2.1.0 =
 
